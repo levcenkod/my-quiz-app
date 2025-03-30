@@ -61,27 +61,27 @@ export default function Quiz() {
   return (
     <Container maxWidth="sm" sx={{ mt: 4, textAlign: "center" }}>
       {!showResults ? (
-        <Box sx={{ p: 3, borderRadius: 3, boxShadow: 3, background: "white" }}>
-          <LinearProgress variant="determinate" value={(currentIndex / questions.length) * 100} sx={{ mb: 2 }} />
-          <Typography variant="body2" sx={{ mb: 1 }}>{`Вопрос ${currentIndex + 1} из ${questions.length}`}</Typography>
-          <Typography variant="h6" sx={{ mb: 2 }}>{questions[currentIndex].text}</Typography>
+        <Box sx={{ p: 3, borderRadius: 3, boxShadow: 3, background: "#ffffff", color: "#000000" }}>
+          <LinearProgress variant="determinate" value={(currentIndex / questions.length) * 100} sx={{ mb: 2, backgroundColor: "#e0e0e0" }} />
+          <Typography variant="body2" sx={{ mb: 1, color: "#333333" }}>{`Вопрос ${currentIndex + 1} из ${questions.length}`}</Typography>
+          <Typography variant="h6" sx={{ mb: 2, color: "#000000" }}>{questions[currentIndex].text}</Typography>
           <Box>
-            <Button variant="contained" onClick={() => handleAnswer("Да")} sx={{ mr: 2 }}>
+            <Button variant="contained" onClick={() => handleAnswer("Да")} sx={{ mr: 2, backgroundColor: "#1976d2", color: "#ffffff" }}>
               Да
             </Button>
-            <Button variant="outlined" onClick={() => handleAnswer("Нет")}>Нет</Button>
+            <Button variant="outlined" onClick={() => handleAnswer("Нет")} sx={{ borderColor: "#1976d2", color: "#1976d2" }}>Нет</Button>
           </Box>
         </Box>
       ) : (
-        <Box sx={{ p: 3, borderRadius: 3, boxShadow: 3, background: "white" }}>
-          <Typography variant="h4" sx={{ mb: 2 }}>Ваши результаты:</Typography>
+        <Box sx={{ p: 3, borderRadius: 3, boxShadow: 3, background: "#ffffff", color: "#000000" }}>
+          <Typography variant="h4" sx={{ mb: 2, color: "#000000" }}>Ваши результаты:</Typography>
           {calculateResults().map((result, i) => (
             <Box key={i} sx={{ mb: 2 }}>
-              <Typography variant="h6">{result.category}: {result.percentage}%</Typography>
-              <LinearProgress variant="determinate" value={result.percentage} sx={{ height: 10, borderRadius: 5 }} />
+              <Typography variant="h6" sx={{ color: "#000000" }}>{result.category}: {result.percentage}%</Typography>
+              <LinearProgress variant="determinate" value={result.percentage} sx={{ height: 10, borderRadius: 5, backgroundColor: "#e0e0e0" }} />
             </Box>
           ))}
-          <Button variant="contained" onClick={() => { setCurrentIndex(0); setAnswers({}); setShowResults(false); }} sx={{ mt: 2 }}>
+          <Button variant="contained" onClick={() => { setCurrentIndex(0); setAnswers({}); setShowResults(false); }} sx={{ mt: 2, backgroundColor: "#1976d2", color: "#ffffff" }}>
             Пройти тест заново
           </Button>
         </Box>
